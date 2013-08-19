@@ -21,11 +21,13 @@ public class MainActivity extends Activity {
 		Parse.initialize(this, "9F2wROYBUEyqci0je6JBPPP1xmNKJcLfc0IACtce", "Zc95yEL51OX8db1jNEaqJ1suLcD1HmDKoptadApL"); 
 		ParseAnalytics.trackAppOpened(getIntent());
 		
-		ParseObject testObject = new ParseObject("Person");
-		testObject.put("name", "sudjeev");
-		testObject.saveInBackground();
-		
 		setContentView(R.layout.activity_main);
+		
+		ParseObject testObject = new ParseObject("Person");
+		testObject.put("name", "Karan");
+		testObject.put("story", "From India");
+		testObject.put("weight", "average");
+		testObject.saveInBackground();
 		
 		scanButton = (Button) this.findViewById(R.id.ScanButton);
 		
@@ -33,7 +35,11 @@ public class MainActivity extends Activity {
 	  		public void onClick(View arg0) {
 	  			//Intent intent = new Intent(MainActivity.this, SelectTypeActivity.class);
 	  			//startActivity(intent);
-	  			
+	  			ParseObject testObject = new ParseObject("Person");
+	  			testObject.put("name", "Sudjeev");
+	  			testObject.put("story", "From Mexico");
+	  			testObject.put("height", "tall");
+	  			testObject.saveInBackground();
 	  			
 	  			
 	  		}
