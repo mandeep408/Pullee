@@ -2,6 +2,8 @@ package com.pullee;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +20,10 @@ public class MainActivity extends Activity {
 		
 		Parse.initialize(this, "9F2wROYBUEyqci0je6JBPPP1xmNKJcLfc0IACtce", "Zc95yEL51OX8db1jNEaqJ1suLcD1HmDKoptadApL"); 
 		ParseAnalytics.trackAppOpened(getIntent());
+		
+		ParseObject testObject = new ParseObject("Person");
+		testObject.put("name", "sudjeev");
+		testObject.saveInBackground();
 		
 		setContentView(R.layout.activity_main);
 		
