@@ -11,7 +11,7 @@
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:text="SCAN"
+        android:text="SCAN BUTTON"
         android:textSize="18sp"
         android:textColor="#000000" />
 
