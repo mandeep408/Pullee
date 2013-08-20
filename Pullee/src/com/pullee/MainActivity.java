@@ -30,9 +30,9 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		/*
 		ParseObject testObject = new ParseObject("Person");
-		testObject.put("name", "Karan");
-		testObject.put("story", "From India");
-		testObject.put("weight", "average");
+		testObject.put("name", "Gurs");
+		testObject.put("story", "Fresno");
+		testObject.put("weight", "built as fuck");
 		testObject.saveInBackground();
 		*/
 		
