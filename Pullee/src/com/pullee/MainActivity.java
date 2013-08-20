@@ -28,6 +28,34 @@ public class MainActivity extends Activity {
 		ParseAnalytics.trackAppOpened(getIntent());
 		
 		setContentView(R.layout.activity_main);
+		
+		for(int i = 0; i <= 5; i++)
+		  {
+			ParseObject testObject = new ParseObject("Person");
+			testObject.put("name", "Pimp Daddy");
+			testObject.put("team", "DubNation");
+			testObject.put("Donate", true);
+			testObject.saveInBackground();
+		  }
+		
+		for(int j = 0; j <= 5; j++)
+		  {
+			ParseObject testObject = new ParseObject("Person");
+			testObject.put("name", "Faggotas");
+			testObject.put("team", "Gayass Lakers");
+			testObject.put("Donate", false);
+			testObject.saveInBackground();
+		  }
+		
+		for(int z = 0; z <= 5; z++)
+		  {
+			ParseObject testObject = new ParseObject("Person");
+			testObject.put("name", "DasCoolDoe");
+			testObject.put("team", "Canucks");
+			testObject.put("Donate", true);
+			testObject.saveInBackground();
+		  }
+		
 		/*
 		ParseObject testObject = new ParseObject("Person");
 		testObject.put("name", "Gurs");
@@ -46,23 +74,12 @@ public class MainActivity extends Activity {
 	  			//startActivity(intent);
 	  			
 	  			ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-	  			query.whereEqualTo("name", "Sudjeev");
+	  			query.whereEqualTo("name", "Gurs");
 	  			query.findInBackground(new FindCallback<ParseObject>() {
 	  			    public void done(List<ParseObject> scoreList, ParseException e) {
 	  			        if (e == null) {
 	  			            Log.d("score", "Retrieved " + scoreList.size() + " scores");
 	  			            
-	  			            String text = "";
-	  			            int count = 0;
-	  			            
-	  			            for(ParseObject sTest: scoreList){
-	  			            	
-	  			            	text += sTest.getString("story") + " ";
-	  			            	count++;
-	  			            	
-	  			            }
-	  			            
-	  			            scanButton.setText(count + " " + text);
 	  			        } else {
 	  			            Log.d("score", "Error: " + e.getMessage());
 	  			        }
