@@ -29,6 +29,8 @@ public class MainActivity extends Activity {
 		
 		setContentView(R.layout.activity_main);
 		
+		//Entering random test data into the database
+		/*
 		for(int i = 0; i <= 5; i++)
 		  {
 			ParseObject testObject = new ParseObject("Person");
@@ -55,6 +57,7 @@ public class MainActivity extends Activity {
 			testObject.put("Donate", true);
 			testObject.saveInBackground();
 		  }
+		  */
 		
 		/*
 		ParseObject testObject = new ParseObject("Person");
@@ -74,11 +77,14 @@ public class MainActivity extends Activity {
 	  			//startActivity(intent);
 	  			
 	  			ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-	  			query.whereEqualTo("name", "Gurs");
+	  			query.whereEqualTo("name", "Faggotas");
 	  			query.findInBackground(new FindCallback<ParseObject>() {
 	  			    public void done(List<ParseObject> scoreList, ParseException e) {
 	  			        if (e == null) {
 	  			            Log.d("score", "Retrieved " + scoreList.size() + " scores");
+	  			            int count =0;
+	  			            
+	  			            scanButton.setText("" + scoreList.size());
 	  			            
 	  			        } else {
 	  			            Log.d("score", "Error: " + e.getMessage());
