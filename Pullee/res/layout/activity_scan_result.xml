@@ -2,17 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/NameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/StoryText"
-        android:layout_marginBottom="50dp"
-        android:layout_centerHorizontal="true"
-        android:text="Name"
-        android:textSize="20sp"
-        android:textColor="#000000" />
     
     <TextView
         android:id="@+id/StoryText"
@@ -35,6 +24,18 @@
         android:textSize="20sp"
         android:textColor="#000000"  />
     
+    
+    <TextView
+        android:id="@+id/DonationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NameText"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="Donated"
+        android:textSize="20sp"
+        android:textColor="#000000"  />
+    
     <Button
         android:id="@+id/BackButton"
         android:layout_width="wrap_content"
@@ -44,5 +45,15 @@
         android:layout_alignParentRight="true"
         android:text="Back Button" />
 
+    <TextView
+        android:id="@+id/NameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/TeamText"
+        android:layout_marginTop="82dp"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="20sp" />
     
 </RelativeLayout>

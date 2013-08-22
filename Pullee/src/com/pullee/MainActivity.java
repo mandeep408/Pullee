@@ -66,7 +66,6 @@ public class MainActivity extends Activity {
 		
 		scanButton = (Button) this.findViewById(R.id.ScanButton);
 		insertButton = (Button) this.findViewById(R.id.InsertButton);
-		
 		insertButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  			
@@ -105,19 +104,26 @@ public class MainActivity extends Activity {
   			        	if(scoreList.size() > 0){
   			        		ParseObject person = scoreList.get(0);
   	  			        	
+  			        		//Not understanding the purpose of this initial print statement
+  			        		//it appears to me that these print statements arent even doing any
+  			        		//in app work
+  			        		/*
   	  			        	System.out.println("BARCODE = " + barcode);
   	  			        	System.out.println("NAME = " + person.getString("name"));
   	  			        	System.out.println("STORY = " + person.getString("story"));
   	  			        	System.out.println("TEAM = " + person.getString("team"));
+  	  			        	*/
   	  			        	
-  	  			        	Global.name = person.getString("name");
-  	  			        	Global.story = person.getString("story");
-  	  			        	Global.team = person.getString("team");
+  	  			        	Global.name = "Name: " + person.getString("name");
+  	  			        	Global.story = "Life Story: " + person.getString("story");
+  	  			        	Global.team = "Team: " + person.getString("team");
+  	  		                Global.donated = "Donated: " + person.getBoolean("Donate");
   			        	} else {
   			        		
   			        		Global.name = "DID NOT FIND";
   	  						Global.story = "DID NOT FIND";
   	  						Global.team = "DID NOT FIND";
+  	  						Global.donated= "DID NOT FIND";
   			        		
   			        	}
   			        	

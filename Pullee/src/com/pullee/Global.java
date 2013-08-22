@@ -5,5 +5,6 @@ public class Global {
 	public static String name;
 	public static String story;
 	public static String team;
+	public static String donated;
 	
 }
