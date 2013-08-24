@@ -1,5 +1,12 @@
 package com.pullee;
 
+import java.util.List;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,10 +51,28 @@ public class ScanResultActivity extends Activity {
 		donateButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				donateButton.setText("Thanks for your donation");
 				
+				ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
+	  			query.whereEqualTo("name", Global.name);
+	  			query.findInBackground(new FindCallback<ParseObject>() {
+	  			    public void done(List<ParseObject> scoreList, ParseException e) {
+	  			        if (e == null) {
+	  			        	if(scoreList.size() > 0){
+	  			        		ParseObject person = scoreList.get(0);
+	  			        		person.put("Donate", true);
+	  			        		person.saveInBackground();
+	  			        	}
+	  			        }
+	  			    }
+	  			});
 			}
-		}); 
-				
+	});
+}
+}
+		
+	
 
 
-}}
+
+	  

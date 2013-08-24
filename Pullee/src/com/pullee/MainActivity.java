@@ -114,10 +114,11 @@ public class MainActivity extends Activity {
   	  			        	System.out.println("TEAM = " + person.getString("team"));
   	  			        	*/
   	  			        	
-  	  			        	Global.name = "Name: " + person.getString("name");
-  	  			        	Global.story = "Life Story: " + person.getString("story");
-  	  			        	Global.team = "Team: " + person.getString("team");
+  	  			        	Global.name = person.getString("name");
+  	  			        	Global.story = person.getString("story");
+  	  			        	Global.team =  person.getString("team");
   	  		                Global.donated = "Donated: " + person.getBoolean("Donate");
+  	  		                Global.id = person.getObjectId();
   			        	} else {
   			        		
   			        		Global.name = "DID NOT FIND";
