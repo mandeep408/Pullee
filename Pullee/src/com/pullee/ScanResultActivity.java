@@ -14,6 +14,7 @@ public class ScanResultActivity extends Activity {
 	private TextView donationText;
 	
 	private Button backButton;
+	private Button donateButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class ScanResultActivity extends Activity {
 		teamText = (TextView) this.findViewById(R.id.TeamText);
 		donationText = (TextView) this.findViewById(R.id.DonationText);
 		
+		donateButton = (Button)this.findViewById(R.id.dButton);
 		backButton = (Button) this.findViewById(R.id.BackButton);
 		
 		nameText.setText(Global.name);
@@ -32,13 +34,20 @@ public class ScanResultActivity extends Activity {
 		teamText.setText(Global.team);
 		donationText.setText(Global.donated);
 		
-		
+		//actual implementation of the functionality of the button.
 		backButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  			finish();
 	  		}
 		});
 		
-	}
+		donateButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		}); 
+				
 
-}
+
+}}
