@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:name="com.pullee.InsertActivity"
-            android:label="@string/title_activity_insert" >
+            android:label="@string/title_activity_scan_result" >
         </activity>
     </application>
 
