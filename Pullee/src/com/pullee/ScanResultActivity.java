@@ -17,7 +17,7 @@ public class ScanResultActivity extends Activity {
 
 	private TextView nameText;
 	private TextView storyText;
-	private TextView teamText;
+	//private TextView teamText;
 	private TextView donationText;
 	
 	private Button backButton;
@@ -30,7 +30,7 @@ public class ScanResultActivity extends Activity {
 		
 		nameText = (TextView) this.findViewById(R.id.NameText);
 		storyText = (TextView) this.findViewById(R.id.StoryText);
-		teamText = (TextView) this.findViewById(R.id.TeamText);
+		//teamText = (TextView) this.findViewById(R.id.TeamText);
 		donationText = (TextView) this.findViewById(R.id.DonationText);
 		
 		donateButton = (Button)this.findViewById(R.id.dButton);
@@ -38,7 +38,7 @@ public class ScanResultActivity extends Activity {
 		
 		nameText.setText(Global.name);
 		storyText.setText(Global.story);
-		teamText.setText(Global.team);
+		//teamText.setText(Global.team);
 		donationText.setText(Global.donated);
 		
 		//actual implementation of the functionality of the button.

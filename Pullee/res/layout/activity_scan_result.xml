@@ -3,39 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-    <TextView
-        android:id="@+id/StoryText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Story"
-        android:textSize="20sp" 
-        android:textColor="#000000" />
-    
-    <TextView
-        android:id="@+id/TeamText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/StoryText"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"
-        android:text="Team"
-        android:textSize="20sp"
-        android:textColor="#000000"  />
-    
-    
-    <TextView
-        android:id="@+id/DonationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/NameText"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"
-        android:text="Donated"
-        android:textSize="20sp"
-        android:textColor="#000000"  />
-    
     <Button
         android:id="@+id/BackButton"
         android:layout_width="wrap_content"
@@ -45,24 +12,46 @@
         android:layout_alignParentRight="true"
         android:text="Back Button" />
 
-    <TextView
-        android:id="@+id/NameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/TeamText"
-        android:layout_marginTop="82dp"
-        android:text="Name"
-        android:textColor="#000000"
-        android:textSize="20sp" />
-
     <Button
         android:id="@+id/dButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/BackButton"
-        android:layout_alignLeft="@+id/DonationText"
-        android:layout_marginBottom="18dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
         android:text="Donate Button" />
+
+    <TextView
+        android:id="@+id/StoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/NameText"
+        android:layout_centerVertical="true"
+        android:text="Story"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/DonationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dButton"
+        android:layout_below="@+id/NameText"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="50dp"
+        android:text="Donated"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/NameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/DonationText"
+        android:layout_marginTop="49dp"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="20sp" />
     
 </RelativeLayout>

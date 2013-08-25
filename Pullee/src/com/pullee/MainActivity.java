@@ -69,6 +69,8 @@ public class MainActivity extends Activity {
 		insertButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  			
+	  			Intent myIntent = new Intent(MainActivity.this, InsertActivity.class);
+	  			MainActivity.this.startActivity(myIntent);
 	  		}
 		});
 		

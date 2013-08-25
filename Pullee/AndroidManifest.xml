@@ -31,6 +31,10 @@
             android:name="com.pullee.ScanResultActivity"
             android:label="@string/title_activity_scan_result" >
         </activity>
+        <activity
+            android:name="com.pullee.InsertActivity"
+            android:label="@string/title_activity_insert" >
+        </activity>
     </application>
 
 </manifest>
