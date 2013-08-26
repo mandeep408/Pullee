@@ -133,7 +133,7 @@ public class InsertActivity extends Activity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+		
 		System.out.println("Im here now");
 		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
