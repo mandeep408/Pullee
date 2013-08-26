@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -21,6 +23,9 @@ public class MainActivity extends Activity {
 	private Button insertButton;
 	
 	private String barcode;
+	//shoulda come from git
+	private RelativeLayout loadingScreen;
+
 	
 	
 	@Override
@@ -34,13 +39,16 @@ public class MainActivity extends Activity {
 		
 		scanButton = (Button) this.findViewById(R.id.ScanButton);
 		insertButton = (Button) this.findViewById(R.id.InsertButton);
-		
+		//shoulda come from git
+		loadingScreen = (RelativeLayout) this.findViewById(R.id.LoadingScreen);
+
 		
 		insertButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  			
 	  			Intent myIntent = new Intent(MainActivity.this, InsertActivity.class);
-	  			MainActivity.this.startActivity(myIntent);
+	  			startActivity(myIntent);
+
 	  		}
 		});
 		
@@ -49,6 +57,9 @@ public class MainActivity extends Activity {
 	  			
 	  			IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
 	  			integrator.initiateScan();
+	  		    //shoulda come from git
+	  			loadingScreen.setVisibility(View.VISIBLE);
+	  			
 	  			
 	  		}
 		});
@@ -108,7 +119,9 @@ public class MainActivity extends Activity {
   			        	
   			        	
   			        }
-  			        
+  			     //shoulda come from git
+  			      loadingScreen.setVisibility(View.INVISIBLE);
+
   			    }
   			});
 			

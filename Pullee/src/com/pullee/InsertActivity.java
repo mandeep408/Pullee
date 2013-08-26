@@ -72,17 +72,12 @@ public class InsertActivity extends Activity {
 				File picture = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 				imageFile = new File(picture, "pullee_image");
 				
-
+				
 			    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
+			    
 //			    startActivityForResult(takePictureIntent, actionCode);
 			    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
 			    startActivityForResult(takePictureIntent, ACTION_CODE);
-
-			    
-			   //First attempt to get the image to show up after taking the picture
-			   
-
 			}
 		});
 		
