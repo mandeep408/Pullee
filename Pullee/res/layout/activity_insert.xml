@@ -28,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
-        android:text="Save Button" />
+        android:text="Save" />
 
     <TextView
         android:id="@+id/name"
@@ -66,5 +66,14 @@
         android:layout_marginTop="58dp"
         android:ems="10"
         android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/saveButton"
+        android:layout_below="@+id/insertStory"
+        android:layout_marginTop="36dp"
+        android:text="Take a Picture" />
 
 </RelativeLayout>

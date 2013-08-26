@@ -5,6 +5,7 @@ import com.parse.ParseObject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ public class InsertActivity extends Activity {
 	//create variables
 	private EditText insertName, insertStory;
 	private TextView heading, name, story;
-	private Button saveButton;
+	private Button saveButton, imageButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,22 @@ public class InsertActivity extends Activity {
 		insertStory = (EditText) this.findViewById(R.id.insertStory);
 		
 		saveButton = (Button) this.findViewById(R.id.saveButton);
+		imageButton = (Button) this.findViewById(R.id.imageButton);
+		
+		
+		imageButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				//private void dispatchTakePictureIntent(int actionCode) {
+				 //Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				   // startActivityForResult(takePictureIntent, actionCode);
+				
+				
+			}
+		});
+		
 		
 		//method that will be executed when the save button is clicked
 		saveButton.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +69,7 @@ public class InsertActivity extends Activity {
 					newGuy.put("story", story);
 					newGuy.saveInBackground();
 					
+					//code for sending toast
 					Context context = getApplicationContext();
 					CharSequence text = "Your information has been saved";
 					int duration = Toast.LENGTH_SHORT;

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -22,8 +21,6 @@ public class MainActivity extends Activity {
 	private Button insertButton;
 	
 	private String barcode;
-	
-	private RelativeLayout loadingScreen;
 	
 	/**
 	 * Example of pushing data into Parse Database:
@@ -66,16 +63,16 @@ public class MainActivity extends Activity {
 		
 		setContentView(R.layout.activity_main);
 		
+		
 		scanButton = (Button) this.findViewById(R.id.ScanButton);
 		insertButton = (Button) this.findViewById(R.id.InsertButton);
 		
-		loadingScreen = (RelativeLayout) this.findViewById(R.id.LoadingScreen);
 		
 		insertButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  			
 	  			Intent myIntent = new Intent(MainActivity.this, InsertActivity.class);
-	  			startActivity(myIntent);
+	  			MainActivity.this.startActivity(myIntent);
 	  		}
 		});
 		
@@ -84,8 +81,6 @@ public class MainActivity extends Activity {
 	  			
 	  			IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
 	  			integrator.initiateScan();
-	  			
-	  			loadingScreen.setVisibility(View.VISIBLE);
 	  			
 	  		}
 		});
@@ -116,8 +111,6 @@ public class MainActivity extends Activity {
   			        		//Not understanding the purpose of this initial print statement
   			        		//it appears to me that these print statements arent even doing any
   			        		//in app work
-  			        		
-  			        		//Print statements were for debugging purposes
   			        		/*
   	  			        	System.out.println("BARCODE = " + barcode);
   	  			        	System.out.println("NAME = " + person.getString("name"));
@@ -141,14 +134,12 @@ public class MainActivity extends Activity {
   			        	
   			        	Intent intentToScan = new Intent(MainActivity.this, ScanResultActivity.class);
   	  			        startActivity(intentToScan);
-  	  			        
+  			        	
   			        } else {
   			        	
   			        	
   			        	
   			        }
-  			        
-  			      loadingScreen.setVisibility(View.INVISIBLE);
   			        
   			    }
   			});
