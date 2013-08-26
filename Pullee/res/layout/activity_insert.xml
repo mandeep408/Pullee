@@ -19,17 +19,6 @@
         android:layout_marginTop="16dp"
         android:text="@string/hello_world" />
 
-    
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"
-        android:text="Save" />
-
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
@@ -68,12 +57,29 @@
         android:inputType="textPersonName" />
 
     <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:text="Save" />
+
+    <Button
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/saveButton"
-        android:layout_below="@+id/insertStory"
-        android:layout_marginTop="36dp"
+        android:layout_above="@+id/saveButton"
+        android:layout_centerHorizontal="true"
         android:text="Take a Picture" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/insertStory"
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_below="@+id/insertStory"
+        android:src="@android:drawable/alert_light_frame" />
 
 </RelativeLayout>

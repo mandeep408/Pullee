@@ -1,27 +1,39 @@
 package com.pullee;
 
+import java.io.File;
+
 import com.parse.ParseObject;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class InsertActivity extends Activity {
 	
+	private static final int ACTION_CODE = 0;
 	//create variables
 	private EditText insertName, insertStory;
 	private TextView heading, name, story;
 	private Button saveButton, imageButton;
+	//private ImageView imageView;
+	private File imageFile;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_insert);
 		
@@ -37,7 +49,7 @@ public class InsertActivity extends Activity {
 		
 		saveButton = (Button) this.findViewById(R.id.saveButton);
 		imageButton = (Button) this.findViewById(R.id.imageButton);
-		
+		//imageView = (ImageView) this.findViewById(R.id.imageView);
 		
 		imageButton.setOnClickListener(new View.OnClickListener() {
 			
@@ -51,6 +63,31 @@ public class InsertActivity extends Activity {
 				
 			}
 		});
+				
+		imageButton.setOnClickListener( new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				File picture = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+				imageFile = new File(picture, "pullee_image");
+				
+
+			    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+//			    startActivityForResult(takePictureIntent, actionCode);
+			    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
+			    startActivityForResult(takePictureIntent, ACTION_CODE);
+
+			    
+			   //First attempt to get the image to show up after taking the picture
+			   
+
+			}
+		});
+		
+		
+		
 		
 		
 		//method that will be executed when the save button is clicked
@@ -92,6 +129,28 @@ public class InsertActivity extends Activity {
 				}
 			}
 		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		System.out.println("Im here now");
+		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+			
+			if(scanResult != null)
+			{
+				//imageFile = scanResult.getContents();
+				ParseObject newGuy = new ParseObject("Person");
+				newGuy.put("Image", imageFile);
+				newGuy.saveInBackground();				
+			}
+			
+			else
+			{
+				Toast.makeText(this, "Unable to save file",Toast.LENGTH_LONG).show();		
+			}
+		
 	}
 
 	@Override

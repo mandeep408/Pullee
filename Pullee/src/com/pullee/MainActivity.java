@@ -22,45 +22,13 @@ public class MainActivity extends Activity {
 	
 	private String barcode;
 	
-	/**
-	 * Example of pushing data into Parse Database:
-	 * 
-	 * 		ParseObject testObject = new ParseObject("Person");
-	 * 		testObject.put("name", "Chirag Singh Toor");
-	 * 		testObject.put("story", "Born in Canada, Moved to the US, going to UCSD for a B.S. in Comp Sci.");
-	 * 		testObject.put("team", "Vancouver Canucks");
-	 * 		testObject.saveInBackground();
-	 * 
-	 * 
-	 * Example of pulling data from Parse Database:
-	 * 
-	 * 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-  	 *		query.whereEqualTo("name", "Sudjeev Singh");
-  	 *		query.findInBackground(new FindCallback<ParseObject>() {
-  	 *		    public void done(List<ParseObject> scoreList, ParseException e) {
-  	 *		        if (e == null) {
-  	 *
-  	 *		        	//PULL DATA WAS A SUCCESS, ACCESS FIELDS LIKE BELOW
-  	 *		        	ParseObject person = scoreList.get(0);
-  	 *		        	Global.name = person.getString("name");
-  	 *		        	Global.story = person.getString("story");
-  	 *		        	Global.team = person.getString("team");
-  	 *		        	
-  	 *		        } else {
-  	 *		        	//PULL DATA WAS A FAILURE
-  	 *		        }
-  	 *		    }
-  	 *		});
-	 * 
-	 */
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		Parse.initialize(this, "9F2wROYBUEyqci0je6JBPPP1xmNKJcLfc0IACtce", "Zc95yEL51OX8db1jNEaqJ1suLcD1HmDKoptadApL"); 
-		ParseAnalytics.trackAppOpened(getIntent());
-		
+		ParseAnalytics.trackAppOpened(getIntent());		 
 		setContentView(R.layout.activity_main);
 		
 		
