@@ -73,13 +73,14 @@
         android:layout_centerHorizontal="true"
         android:text="Take a Picture" />
 
+
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/profileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/insertStory"
-        android:layout_alignRight="@+id/imageButton"
-        android:layout_below="@+id/insertStory"
-        android:src="@android:drawable/alert_light_frame" />
+        android:layout_above="@+id/imageButton"
+        android:layout_alignLeft="@+id/saveButton"
+        android:layout_marginBottom="23dp"
+        android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>

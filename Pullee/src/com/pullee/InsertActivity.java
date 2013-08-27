@@ -1,7 +1,9 @@
 package com.pullee;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 import android.net.Uri;
@@ -21,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 public class InsertActivity extends Activity {
 	
 	private static final int ACTION_CODE = 0;
@@ -28,8 +32,10 @@ public class InsertActivity extends Activity {
 	private EditText insertName, insertStory;
 	private TextView heading, name, story;
 	private Button saveButton, imageButton;
-	//private ImageView imageView;
+	private ImageView profileImage;
 	private File imageFile;
+	private byte[] byteArray;
+	private boolean accessed = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -91,14 +97,19 @@ public class InsertActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if( insertName.getText().length() != 0 && insertStory.getText().length() != 0)
+				if( insertName.getText().length() != 0 && insertStory.getText().length() != 0 && accessed)
 				{
 					final String name = insertName.getText().toString();
 					final String story = insertStory.getText().toString();
+					
+					//storing the actual file on parse using parsefile objects
+					
+					ParseFile file = new ParseFile("image.png", byteArray);
 				
 					ParseObject newGuy = new ParseObject("Person");
 					newGuy.put("name", name);
 					newGuy.put("story", story);
+					newGuy.put("Image", file);
 					newGuy.saveInBackground();
 					
 					//code for sending toast
@@ -126,21 +137,33 @@ public class InsertActivity extends Activity {
 		});
 	}
 
+	//Getting result of taking the picture
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-		System.out.println("Im here now");
-		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-
-			
-			if(scanResult != null)
+	
+			if(requestCode == ACTION_CODE)
 			{
-				//imageFile = scanResult.getContents();
-				ParseObject newGuy = new ParseObject("Person");
-				newGuy.put("Image", imageFile);
-				newGuy.saveInBackground();				
+				//gets bitmap data of whats stored at imageFile
+				Bitmap photo = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+				
+				//if the photo is valid
+				if(photo != null)
+				{
+					//set the imageview to the image so it can be seen
+					profileImage = (ImageView) this.findViewById(R.id.profileImage);
+					profileImage.setImageBitmap(photo);
+					
+					//convert the image to a bytearray so it can be stored on parse
+					//got this code from stackoverflow
+					
+					ByteArrayOutputStream stream = new ByteArrayOutputStream();
+					photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+					byte[] byteA = stream.toByteArray();
+					byteArray = byteA;
+					accessed = true;			
+				}
 			}
-			
 			else
 			{
 				Toast.makeText(this, "Unable to save file",Toast.LENGTH_LONG).show();		

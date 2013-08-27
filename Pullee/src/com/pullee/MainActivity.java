@@ -90,12 +90,7 @@ public class MainActivity extends Activity {
   			        		//Not understanding the purpose of this initial print statement
   			        		//it appears to me that these print statements arent even doing any
   			        		//in app work
-  			        		/*
-  	  			        	System.out.println("BARCODE = " + barcode);
-  	  			        	System.out.println("NAME = " + person.getString("name"));
-  	  			        	System.out.println("STORY = " + person.getString("story"));
-  	  			        	System.out.println("TEAM = " + person.getString("team"));
-  	  			        	*/
+  			        		
   	  			        	
   	  			        	Global.name = person.getString("name");
   	  			        	Global.story = person.getString("story");
