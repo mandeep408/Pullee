@@ -60,27 +60,28 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/story"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="27dp"
         android:text="Save" />
 
     <Button
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/saveButton"
-        android:layout_centerHorizontal="true"
+        android:layout_alignBaseline="@+id/saveButton"
+        android:layout_alignBottom="@+id/saveButton"
+        android:layout_alignRight="@+id/insertStory"
         android:text="Take a Picture" />
-
 
     <ImageView
         android:id="@+id/profileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageButton"
-        android:layout_alignLeft="@+id/saveButton"
-        android:layout_marginBottom="23dp"
+        android:layout_marginBottom="38dp"
+        android:layout_marginLeft="28dp"
+        android:layout_toRightOf="@+id/saveButton"
         android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
