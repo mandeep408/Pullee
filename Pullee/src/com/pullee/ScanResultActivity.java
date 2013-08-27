@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ScanResultActivity extends Activity {
@@ -22,6 +23,7 @@ public class ScanResultActivity extends Activity {
 	
 	private Button backButton;
 	private Button donateButton;
+	private ImageView profilePic;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +37,26 @@ public class ScanResultActivity extends Activity {
 		
 		donateButton = (Button)this.findViewById(R.id.dButton);
 		backButton = (Button) this.findViewById(R.id.BackButton);
+		profilePic = (ImageView) this.findViewById(R.id.profilePic);
 		
 		nameText.setText(Global.name);
 		storyText.setText(Global.story);
 		//teamText.setText(Global.team);
 		donationText.setText(Global.donated);
+		
+		/*ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
+			query.whereEqualTo("name", Global.name);
+			query.findInBackground(new FindCallback<ParseObject>() {
+			    public void done(List<ParseObject> scoreList, ParseException e) {
+			        if (e == null) {
+			        	if(scoreList.size() > 0){
+			        		ParseObject person = scoreList.get(0);
+			        		person.get("Donate", true);
+			        		person.saveInBackground();
+			        	}
+			        }
+			    }
+			});*/
 		
 		//actual implementation of the functionality of the button.
 		backButton.setOnClickListener(new View.OnClickListener(){

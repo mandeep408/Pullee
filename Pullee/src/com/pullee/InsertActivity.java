@@ -105,6 +105,7 @@ public class InsertActivity extends Activity {
 					//storing the actual file on parse using parsefile objects
 					
 					ParseFile file = new ParseFile("image.png", byteArray);
+					file.saveInBackground();
 				
 					ParseObject newGuy = new ParseObject("Person");
 					newGuy.put("name", name);
