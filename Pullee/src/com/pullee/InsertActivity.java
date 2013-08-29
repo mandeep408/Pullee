@@ -29,8 +29,8 @@ public class InsertActivity extends Activity {
 	
 	private static final int ACTION_CODE = 0;
 	//create variables
+	private TextView heading;
 	private EditText insertName, insertStory;
-	private TextView heading, name, story;
 	private Button saveButton, imageButton;
 	private ImageView profileImage;
 	private File imageFile;
@@ -45,16 +45,14 @@ public class InsertActivity extends Activity {
 		
 		//link up variables to their positions on the layout using id's in R.java
 		
-		heading = (TextView) this.findViewById(R.id.heading);
-		name = (TextView) this.findViewById(R.id.name);
-		story = (TextView) this.findViewById(R.id.story);
+		heading = (TextView) this.findViewById(R.id.Heading);
  
 		
-		insertName = (EditText) this.findViewById(R.id.insertName);
-		insertStory = (EditText) this.findViewById(R.id.insertStory);
+		insertName = (EditText) this.findViewById(R.id.InsertName);
+		insertStory = (EditText) this.findViewById(R.id.InsertStory);
 		
-		saveButton = (Button) this.findViewById(R.id.saveButton);
-		imageButton = (Button) this.findViewById(R.id.imageButton);
+		saveButton = (Button) this.findViewById(R.id.SaveButton);
+		imageButton = (Button) this.findViewById(R.id.ImageButton);
 		//imageView = (ImageView) this.findViewById(R.id.imageView);
 		
 		imageButton.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +150,7 @@ public class InsertActivity extends Activity {
 				if(photo != null)
 				{
 					//set the imageview to the image so it can be seen
-					profileImage = (ImageView) this.findViewById(R.id.profileImage);
+					profileImage = (ImageView) this.findViewById(R.id.ProfileImage);
 					profileImage.setImageBitmap(photo);
 					
 					//convert the image to a bytearray so it can be stored on parse
@@ -167,6 +165,7 @@ public class InsertActivity extends Activity {
 			}
 			else
 			{
+				heading.setText("Failed to create image");
 				Toast.makeText(this, "Unable to save file",Toast.LENGTH_LONG).show();		
 			}
 		
