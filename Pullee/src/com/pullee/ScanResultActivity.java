@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,7 @@ public class ScanResultActivity extends Activity {
 	private TextView nameText;
 	private TextView storyText;
 	//private TextView teamText;
-	private TextView donationText;
+	//private TextView donationText;
 	
 	private Button backButton;
 	private Button donateButton;
@@ -33,7 +35,7 @@ public class ScanResultActivity extends Activity {
 		nameText = (TextView) this.findViewById(R.id.NameText);
 		storyText = (TextView) this.findViewById(R.id.StoryText);
 		//teamText = (TextView) this.findViewById(R.id.TeamText);
-		donationText = (TextView) this.findViewById(R.id.DonationText);
+		//donationText = (TextView) this.findViewById(R.id.DonationText);
 		
 		donateButton = (Button)this.findViewById(R.id.dButton);
 		backButton = (Button) this.findViewById(R.id.BackButton);
@@ -42,8 +44,30 @@ public class ScanResultActivity extends Activity {
 		nameText.setText(Global.name);
 		storyText.setText(Global.story);
 		//teamText.setText(Global.team);
-		donationText.setText(Global.donated);
+		//donationText.setText(Global.donated);
 		
+		
+		//Code to pull down image and set profile pic
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
+			query.whereEqualTo("name", Global.name);
+			query.findInBackground(new FindCallback<ParseObject>() {
+			    public void done(List<ParseObject> scoreList, ParseException e) {
+			        if (e == null) {
+			        	if(scoreList.size() > 0){
+			        		ParseObject person = scoreList.get(0);
+			                ParseFile bum = (ParseFile) person.get("Image");
+			                try {
+								byte[] file = bum.getData();
+							    profilePic.setImageBitmap(BitmapFactory.decodeByteArray(file,0,file.length));
+							} catch (ParseException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+
+			        	}
+			        }
+			    }
+			});
 		/*ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
 			query.whereEqualTo("name", Global.name);
 			query.findInBackground(new FindCallback<ParseObject>() {
