@@ -132,4 +132,12 @@ public class MainActivity extends Activity {
 
 	}
 	
+	/*
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		EasyTracker.getInstance(this).activityStart(this);
+	}*/
+	
 }
