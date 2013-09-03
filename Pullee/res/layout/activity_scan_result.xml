@@ -37,8 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/StoryText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="77dp"
+        android:layout_alignLeft="@+id/dButton"
+        android:layout_marginBottom="42dp"
+        android:layout_marginLeft="21dp"
         android:text="Name"
         android:textColor="#000000"
         android:textSize="20sp" />
@@ -47,8 +48,9 @@
         android:id="@+id/profilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/NameText"
-        android:layout_toLeftOf="@+id/dButton"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:layout_toLeftOf="@+id/NameText"
         android:src="@android:drawable/alert_light_frame" />
 
 </RelativeLayout>
