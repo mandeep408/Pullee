@@ -73,6 +73,7 @@ public class InsertActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
+				//getting storage space on the phone
 				File picture = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 				imageFile = new File(picture, "pullee_image");
 				

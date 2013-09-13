@@ -22,25 +22,24 @@
         android:text="Donate Button" />
 
     <TextView
-        android:id="@+id/StoryText"
+        android:id="@+id/NameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/dButton"
-        android:layout_alignLeft="@+id/NameText"
-        android:layout_marginBottom="136dp"
-        android:text="Story"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="37dp"
+        android:layout_toLeftOf="@+id/dButton"
+        android:text="Name"
         android:textColor="#000000"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/NameText"
+        android:id="@+id/StoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/StoryText"
-        android:layout_alignLeft="@+id/dButton"
-        android:layout_marginBottom="42dp"
-        android:layout_marginLeft="21dp"
-        android:text="Name"
+        android:layout_below="@+id/NameText"
+        android:layout_marginTop="61dp"
+        android:layout_toLeftOf="@+id/dButton"
+        android:text="Story"
         android:textColor="#000000"
         android:textSize="20sp" />
 
@@ -48,9 +47,9 @@
         android:id="@+id/profilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="32dp"
-        android:layout_toLeftOf="@+id/NameText"
+        android:layout_above="@+id/dButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp"
         android:src="@android:drawable/alert_light_frame" />
 
 </RelativeLayout>
