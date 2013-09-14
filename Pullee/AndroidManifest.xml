@@ -11,13 +11,10 @@
     <!-- Parse permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+	<uses-feature android:name="android.hardware.camera" />
     <!--  -->
-    
-    <!-- Google Analytics Permissions -->
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<!--  -->
-	
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -39,6 +36,14 @@
         <activity
             android:name="com.pullee.InsertActivity"
             android:label="@string/title_activity_scan_result" >
+        </activity>
+        <activity
+            android:name="com.pullee.CameraTestActivity"
+            android:label="@string/title_activity_scan_result" >
+        </activity>
+        <activity android:name="com.dm.zbar.android.scanner.ZBarScannerActivity"
+	        android:screenOrientation="landscape"
+	        android:label="@string/app_name" >
         </activity>
     </application>
 
