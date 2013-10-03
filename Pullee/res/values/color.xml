@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_st">#8825556E</color>
+    <color name="green_st">#8800611C</color>
+    <color name="red_st">#88800000</color>
+    <color name="purple_st">#88551A8B</color>
+    <color name="orange_st">#88FF6600</color>
+    <color name="navyblue_st">#8823238E</color>
+    <color name="gold_st">#88FFD700</color>
+    <color name="black_st">#88000000</color>
+</resources>

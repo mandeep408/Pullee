@@ -1,33 +1,177 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#B6B6B4" >
 
-    <Button
-        android:id="@+id/ScanButton"
+    <LinearLayout 
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="SCAN BUTTON"
-        android:textSize="18sp"
-        android:textColor="#000000" />
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	    android:weightSum="2.0" >
+	    
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="1.0"
+	        android:background="@drawable/pulleebackground"
+	        android:orientation="vertical"
+	        android:weightSum="10.0" >
+	        
+	        <View
+	            android:layout_width="fill_parent"
+	            android:layout_height="0dp"
+	            android:layout_weight="1.0" />
+	        
+	        <TextView
+	            android:id="@+id/PulleeText"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:textSize="20sp"
+	            android:textColor="#FFA500"
+	            android:text="Pullee Mobile Donations"
+	            android:textStyle="bold"
+	            android:gravity="center_horizontal" />
+	        
+	    </LinearLayout>
+	    
+	    <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="2dp"
+	        android:background="#000000" />
+	    
+	    <RelativeLayout
+	        android:id="@+id/ScanButton"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="0.5"
+	        android:clickable="true" 
+	        android:background="@drawable/blue_button_selector">
+	        
+	        <View
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/CenterView1"
+                android:layout_marginBottom="10dp"
+                android:background="#000000" />
+	        
+	        <View
+                android:id="@+id/CenterView1"
+                android:layout_height="0dp"
+                android:layout_width="fill_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+	        
+	        <TextView
+	            android:id="@+id/ScanButtonText"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerHorizontal="true"
+	            android:layout_below="@+id/CenterView1"
+	            android:layout_marginTop="10dp"
+	            android:textSize="15sp"
+	            android:textColor="#FFFFFF"
+	            android:textStyle="bold"
+	            android:text="Scan a QR Code" />
+	        
+	    </RelativeLayout>
+	    
+	    <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="2dp"
+	        android:background="#000000" />
+	    
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="0.5"
+	        android:orientation="horizontal"
+	        android:weightSum="1.0" >
+	        
+	        <RelativeLayout
+	            android:id="@+id/HistoryButton"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="0.5"
+	            android:clickable="true" 
+	            android:background="@drawable/blue_button_selector">
+	            
+	            <View
+	                android:layout_width="30dp"
+	                android:layout_height="30dp"
+	                android:layout_centerHorizontal="true"
+	                android:layout_above="@+id/CenterView2"
+	                android:layout_marginBottom="10dp"
+	                android:background="#000000" />
+	            
+	            <View
+	                android:id="@+id/CenterView2"
+	                android:layout_height="0dp"
+	                android:layout_width="fill_parent"
+	                android:layout_centerVertical="true"
+	                android:layout_centerHorizontal="true"/>
+	            
+	            <TextView
+		            android:id="@+id/HistoryButtonText"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/CenterView2"
+		            android:layout_marginTop="10dp"
+		            android:textSize="15sp"
+		            android:textColor="#FFFFFF"
+		            android:textStyle="bold"
+		            android:text="Donation History" />
+	            
+	        </RelativeLayout>
+	        
+	        <View
+	            android:layout_width="2dp"
+	            android:layout_height="fill_parent"
+	            android:background="#000000" />
+	        
+	        <RelativeLayout
+	            android:id="@+id/AboutButton"
+	            android:layout_width="0dp"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="0.5"
+	            android:clickable="true" 
+	            android:background="@drawable/blue_button_selector">
+	            
+	            <View
+	                android:layout_width="30dp"
+	                android:layout_height="30dp"
+	                android:layout_centerHorizontal="true"
+	                android:layout_above="@+id/CenterView3"
+	                android:layout_marginBottom="10dp"
+	                android:background="#000000" />
+	            
+	            <View
+	                android:id="@+id/CenterView3"
+	                android:layout_height="0dp"
+	                android:layout_width="fill_parent"
+	                android:layout_centerVertical="true"
+	                android:layout_centerHorizontal="true"/>
+	            
+	            <TextView
+		            android:id="@+id/AboutButtonText"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/CenterView3"
+		            android:layout_marginTop="10dp"
+		            android:textSize="15sp"
+		            android:textColor="#FFFFFF"
+		            android:textStyle="bold"
+		            android:text="About Pullee" />
+	            
+	        </RelativeLayout>
+	        
+	    </LinearLayout>
+	
+	</LinearLayout>
     
-    <Button
-        android:id="@+id/InsertButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/ScanButton"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"
-        android:text="INSERT BUTTON"
-        android:textSize="18sp"
-        android:textColor="#000000" />
-
     <RelativeLayout 
         android:id="@+id/LoadingScreen"
         android:layout_width="fill_parent"
@@ -35,7 +179,6 @@
         android:background="#AA000000"
         android:visibility="invisible" >
 
-        
         <TextView
             android:id="@+id/LaodingText"
             android:layout_width="wrap_content"

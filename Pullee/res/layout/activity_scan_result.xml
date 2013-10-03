@@ -1,55 +1,115 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:orientation="vertical" 
+    android:weightSum="10.0">
 
-    <Button
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.0" >
+
+        <LinearLayout
+            android:id="@+id/ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+            <TextView
+		        android:id="@+id/NameText"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal"
+		        android:layout_marginTop="30dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:text="Name"
+		        android:textColor="#FFFFFF"
+		        android:textSize="20sp" />
+		
+		    <TextView
+		        android:id="@+id/StoryText"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="left"
+		        android:layout_marginTop="30dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:text="Story"
+		        android:textColor="#FFFFFF"
+		        android:textSize="20sp" />
+		
+		    <RelativeLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" >
+		            
+		        <ImageView
+			        android:id="@+id/profilePic"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:src="@android:drawable/alert_light_frame" />
+
+		        <ProgressBar
+		            android:id="@+id/ImageSpinner"
+		            style="?android:attr/progressBarStyleLarge"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content" />
+		        
+		    </RelativeLayout>
+		    
+        </LinearLayout>
+        
+    </ScrollView>
+    
+    <View
+   	    android:layout_width="fill_parent"
+   	    android:layout_height="2dp"
+   	    android:background="#000000" />
+    
+    <RelativeLayout
+        android:id="@+id/DonateButton"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.25"
+        android:clickable="true"
+        android:background="@drawable/blue_button_selector" >
+        
+        <TextView
+	        android:id="@+id/DonateButtonText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:layout_centerHorizontal="true"
+	        android:text="Donate"
+	        android:textColor="#FFFFFF"
+	        android:textSize="20sp" />
+        
+    </RelativeLayout>
+    
+   	<View
+   	    android:layout_width="fill_parent"
+   	    android:layout_height="2dp"
+   	    android:background="#000000" />
+    
+    <RelativeLayout
         android:id="@+id/BackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:text="Back Button" />
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
+        android:clickable="true"
+        android:background="@drawable/blue_button_selector" >
+        
+        <TextView
+	        android:id="@+id/BackButtonText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:layout_centerHorizontal="true"
+	        android:text="Back"
+	        android:textColor="#FFFFFF"
+	        android:textSize="20sp" />
+        
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/dButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/BackButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="Donate Button" />
-
-    <TextView
-        android:id="@+id/NameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="37dp"
-        android:layout_toLeftOf="@+id/dButton"
-        android:text="Name"
-        android:textColor="#000000"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/StoryText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/NameText"
-        android:layout_marginTop="61dp"
-        android:layout_toLeftOf="@+id/dButton"
-        android:text="Story"
-        android:textColor="#000000"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/profilePic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/dButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="61dp"
-        android:src="@android:drawable/alert_light_frame" />
-
-</RelativeLayout>
+</LinearLayout>

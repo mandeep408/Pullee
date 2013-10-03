@@ -1,18 +1,18 @@
 package com.pullee;
 
-import java.util.List; 
+import java.util.List;
 
 import net.sourceforge.zbar.Symbol;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-
+import com.dm.zbar.android.scanner.ZBarConstants;
+import com.dm.zbar.android.scanner.ZBarScannerActivity;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
@@ -20,207 +20,143 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-
-import com.dm.zbar.android.scanner.ZBarConstants;
-import com.dm.zbar.android.scanner.ZBarScannerActivity;
-
 public class MainActivity extends Activity {
 
-	private Button scanButton;
-	private Button insertButton;
+	/** Buttons are actually RelativeLayouts to fit the UI design style */
+	private RelativeLayout scanButton;
+	private RelativeLayout historyButton;
+	private RelativeLayout aboutButton;
 	
-	private String barcode;
-	//shoulda come from git
+	/** Layout to bring the loading page to and off the screen */
 	private RelativeLayout loadingScreen;
 
+	/** Necessary variables for ZBar scanning */
 	private static final int ZBAR_SCANNER_REQUEST = 0;
-    private static final int ZBAR_QR_SCANNER_REQUEST = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		/** Required Parse code, first line is to initialize and use Parse, 2nd is to stard App statistic recording */
 		Parse.initialize(this, "9F2wROYBUEyqci0je6JBPPP1xmNKJcLfc0IACtce", "Zc95yEL51OX8db1jNEaqJ1suLcD1HmDKoptadApL"); 
 		ParseAnalytics.trackAppOpened(getIntent());		 
+
+		//Get rid of the title bar for the app
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
 		setContentView(R.layout.activity_main);
 		
-		
-		scanButton = (Button) this.findViewById(R.id.ScanButton);
-		insertButton = (Button) this.findViewById(R.id.InsertButton);
-		//shoulda come from git
+		/** Match UI Views to corresponding elements in the XML Layout */
+		scanButton = (RelativeLayout) this.findViewById(R.id.ScanButton);
+		historyButton = (RelativeLayout) this.findViewById(R.id.HistoryButton);
+		aboutButton = (RelativeLayout) this.findViewById(R.id.AboutButton);
 		loadingScreen = (RelativeLayout) this.findViewById(R.id.LoadingScreen);
 
-		
-		insertButton.setOnClickListener(new View.OnClickListener(){
-	  		public void onClick(View arg0) {
-	  			
-	  			Intent myIntent = new Intent(MainActivity.this, InsertActivity.class);
-	  			startActivity(myIntent);
-
-	  		}
-		});
-		
+		/** Set the click listeners for the screens buttons */
 		scanButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  			
+	  			//On click of the Scan Button we will use the ZBar scanning library to handle QR Code scanning
 	  			Intent intent = new Intent(MainActivity.this, ZBarScannerActivity.class);
+	  			//Necessary code from ZBar documentation, tells the ZBar Activity what type of scanning to perform
 	  			intent.putExtra(ZBarConstants.SCAN_MODES, new int[]{Symbol.QRCODE, Symbol.ISBN10, Symbol.ISBN13});
+	  			//Getting a result from this Activity, the contents of the barcode
 	  			startActivityForResult(intent, ZBAR_SCANNER_REQUEST);
 	  			
+	  		}
+		});
+		
+		historyButton.setOnClickListener(new View.OnClickListener(){
+	  		public void onClick(View arg0) {
 	  			
-	  			/**
-	  			 * Code commented out below uses ZXing for scanning instead of ZBar
-	  			 */
+	  			//On click of the history button we want to show the donor's donation history
 	  			
-	  			/*
-	  			Intent intent = new Intent(MainActivity.this, CameraTestActivity.class);
-	  			startActivity(intent);
+	  		}
+		});
+		
+		aboutButton.setOnClickListener(new View.OnClickListener(){
+	  		public void onClick(View arg0) {
 	  			
-	  			IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-	  			integrator.initiateScan();
-	  		    //shoulda come from git
-	  			loadingScreen.setVisibility(View.VISIBLE);
-	  			*/
+	  			//On click of the about button we want to bring a About Pullee page up
 	  			
 	  		}
 		});
 		
 	}
 
+	/** Below method is what is called when the scan is performed, on result of the ZBar Activity */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{    
+		//String to hold the actual content of the barcode
+		String scanResult = null;
+		
 	    if (resultCode == RESULT_OK) 
 	    {
-	        // Scan result is available by making a call to data.getStringExtra(ZBarConstants.SCAN_RESULT)
-	        // Type of the scan result is available by making a call to data.getStringExtra(ZBarConstants.SCAN_RESULT_TYPE)
-	        Toast.makeText(this, "Scan Result = " + data.getStringExtra(ZBarConstants.SCAN_RESULT), Toast.LENGTH_SHORT).show();
-	        //Toast.makeText(this, "Scan Result Type = " + data.getStringExtra(ZBarConstants.SCAN_RESULT_TYPE), Toast.LENGTH_SHORT).show();
-	        // The value of type indicates one of the symbols listed in Advanced Options below.
+	    	//if scan was performed okay, get the content of the scan
+	    	scanResult = data.getStringExtra(ZBarConstants.SCAN_RESULT);  
+	    	
 	    } else if(resultCode == RESULT_CANCELED) {
-	        Toast.makeText(this, "Camera unavailable", Toast.LENGTH_SHORT).show();
+	    	//else if the scan was not performed okay pop up a toast message
+	        Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_SHORT).show();
+	        
 	    }
-	    
-	    String scanResult = data.getStringExtra(ZBarConstants.SCAN_RESULT);
 	    
 	    if (scanResult != null) {
 
-			//handle scan result, string contents holds the results from the scan
+			/** if scanResult (the value returned from the barcode scan) is not null then 
+	    	  we have a successful scan and need to get the data for this person from 
+	    	  Parse. QR-Code's hold the person's name */
+	    	
+	    	//Bring up the loading screen 
+	    	loadingScreen.setVisibility(View.VISIBLE);
+	    	
+	    	//Set up a ParseQuery for the Person class and find the Person who's name matches
+	    	//  what was encoded in the QR-Code. 
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
   			query.whereEqualTo("name", scanResult);
+  			//Run the query in a background thread, good practice to handle network connections on a seperate thread
   			query.findInBackground(new FindCallback<ParseObject>() {
   			    public void done(List<ParseObject> scoreList, ParseException e) {
   			        if (e == null) {
-  			        	
+  			        	//if there was no ParseException continue here
   			        	if(scoreList.size() > 0){
+  			        		//if the size of the list of Person's returned from the query has elements get the first one
+  			        		//  (there should only be 1 person in the list)
   			        		ParseObject person = scoreList.get(0);
   	  			        	
-  			        		//Not understanding the purpose of this initial print statement
-  			        		//it appears to me that these print statements arent even doing any
-  			        		//in app work
-  			        		
-  	  			        	
+  			        		//Set global variables equal to the person's information so they can be accessed and used 
+  			        		//  for display in the ScanResultActivity
   	  			        	Global.name = person.getString("name");
   	  			        	Global.story = person.getString("story");
   	  			        	Global.team =  person.getString("team");
   	  		                Global.donated = "Donated: " + person.getBoolean("Donate");
   	  		                Global.id = person.getObjectId();
+  	  		                
   			        	} else {
-  			        		
+  			        		//else if no Person's were returned and no exception, it means no such person is in our DB
   			        		Global.name = "DID NOT FIND";
   	  						Global.story = "DID NOT FIND";
   	  						Global.team = "DID NOT FIND";
   	  						Global.donated= "DID NOT FIND";
-  			        		
   			        	}
   			        	
+  			        	//Start the ScanResultActivity to show the results of a successful scan
   			        	Intent intentToScan = new Intent(MainActivity.this, ScanResultActivity.class);
   	  			        startActivity(intentToScan);
   			        	
   			        } else {
   			        	
-  			        	
+  			        	//else if there was a exception handle it
   			        	
   			        }
   			        
-  			      //shoulda come from git
+  			      //Get rid of the loading screen
   			      loadingScreen.setVisibility(View.INVISIBLE);
 
   			    }
-  			});
-			
+  			});	
 		}
-	    
 	}
-	
-	
-	/**
-	 * Code commented out below uses ZXing for scanning instead of ZBar
-	 */
-	
-	/*
-	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
-		
-		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-		if (scanResult != null) {
-
-			//handle scan result, string contents holds the results from the scan
-			barcode = scanResult.getContents();
-			
-			ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-  			query.whereEqualTo("name", barcode);
-  			query.findInBackground(new FindCallback<ParseObject>() {
-  			    public void done(List<ParseObject> scoreList, ParseException e) {
-  			        if (e == null) {
-  			        	
-  			        	if(scoreList.size() > 0){
-  			        		ParseObject person = scoreList.get(0);
-  	  			        	
-  			        		//Not understanding the purpose of this initial print statement
-  			        		//it appears to me that these print statements arent even doing any
-  			        		//in app work
-  			        		
-  	  			        	
-  	  			        	Global.name = person.getString("name");
-  	  			        	Global.story = person.getString("story");
-  	  			        	Global.team =  person.getString("team");
-  	  		                Global.donated = "Donated: " + person.getBoolean("Donate");
-  	  		                Global.id = person.getObjectId();
-  			        	} else {
-  			        		
-  			        		Global.name = "DID NOT FIND";
-  	  						Global.story = "DID NOT FIND";
-  	  						Global.team = "DID NOT FIND";
-  	  						Global.donated= "DID NOT FIND";
-  			        		
-  			        	}
-  			        	
-  			        	Intent intentToScan = new Intent(MainActivity.this, ScanResultActivity.class);
-  	  			        startActivity(intentToScan);
-  			        	
-  			        } else {
-  			        	
-  			        	
-  			        	
-  			        }
-  			     //shoulda come from git
-  			      loadingScreen.setVisibility(View.INVISIBLE);
-
-  			    }
-  			});
-			
-		}
-
-		if (resultCode == RESULT_CANCELED) {
-
-			//Handle scan failure, rescan
-			IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-			integrator.initiateScan();
-
-		}
-
-	} */
-
 	
 }
