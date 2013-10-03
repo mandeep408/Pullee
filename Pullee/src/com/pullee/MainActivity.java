@@ -78,7 +78,9 @@ public class MainActivity extends Activity {
 	  		public void onClick(View arg0) {
 	  			
 	  			//On click of the about button we want to bring a About Pullee page up
-	  			
+	  			/** For now this is the substitute for the Insert Button */
+	  			Intent intent = new Intent(MainActivity.this, InsertActivity.class);
+	  			startActivity(intent);
 	  		}
 		});
 		
