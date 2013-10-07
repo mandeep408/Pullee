@@ -67,7 +67,7 @@ public class InsertActivity extends Activity {
 				
 			}
 		});
-				
+		
 		imageButton.setOnClickListener( new View.OnClickListener() {
 			
 			@Override
