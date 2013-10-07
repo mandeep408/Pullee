@@ -60,7 +60,7 @@ public class SignUpActivity extends Activity
 					newuser.setPassword(pswd);
 					newuser.setEmail(eml);					
 					
-					user.signUpInBackground(new SignUpCallback() {
+					newuser.signUpInBackground(new SignUpCallback() {
 						  public void done(ParseException e) {
 						    if (e == null) {
 						      // Hooray! Let them use the app now.
