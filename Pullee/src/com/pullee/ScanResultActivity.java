@@ -1,6 +1,5 @@
 package com.pullee;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import android.app.Activity;
@@ -74,8 +73,6 @@ public class ScanResultActivity extends Activity {
 		storyText.setText(Global.story);
 		
 		/** Set click listeners for the screen's buttons */
-		
-		
 		backButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  		//Back button just finishes the current activity
