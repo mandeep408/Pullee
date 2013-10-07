@@ -64,6 +64,8 @@ public class SignUpActivity extends Activity
 						  public void done(ParseException e) {
 						    if (e == null) {
 						      // Hooray! Let them use the app now.
+					  			Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+					  			startActivity(intent);
 						    } else {
 						      // Sign up didn't succeed. Look at the ParseException
 						      // to figure out what went wrong
