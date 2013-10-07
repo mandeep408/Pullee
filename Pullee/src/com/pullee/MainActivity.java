@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
 		
 		historyButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
-	  			Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+		  			Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
 	  			startActivity(intent);
 	  			//On click of the history button we want to show the donor's donation history
 	  			
