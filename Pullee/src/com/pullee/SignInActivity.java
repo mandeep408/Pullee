@@ -1,5 +1,6 @@
 package com.pullee;
 
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -14,7 +15,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignInActivity extends Activity {
 
@@ -24,6 +27,8 @@ public class SignInActivity extends Activity {
 	private EditText passwordEditText;
 	
 	private Button loginButton;
+	
+	private RelativeLayout loadingScreen;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,27 +67,45 @@ public class SignInActivity extends Activity {
 		
 		loginButton = (Button) this.findViewById(R.id.LogInButton);
 		
+		loadingScreen = (RelativeLayout) this.findViewById(R.id.LoadingScreen);
+		
+		loadingScreen.setVisibility(View.INVISIBLE);
+		
 		loginButton.setOnClickListener(new View.OnClickListener(){
 	  		public void onClick(View arg0) {
 	  			
-	  			try {
-					ParseUser user = ParseUser.logIn(usernameEditText.getText().toString(), passwordEditText.getText().toString());
-					
-					if(user != null){
-						
-						Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-						startActivity(intent);
-						
-					}
-					
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	  			loadingScreen.setVisibility(View.VISIBLE);
 	  			
-  			
-  		}
-	});
+  				ParseUser.logInInBackground(usernameEditText.getText().toString(), 
+  						passwordEditText.getText().toString(), new LogInCallback() {
+  				   public void done(ParseUser user, ParseException e) {
+  				     if (e == null && user != null) {
+  				       
+  				    	loadingScreen.setVisibility(View.INVISIBLE);
+  				    	 
+  				    	Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+						startActivity(intent);
+  				    	
+  				     } else if (user == null) {
+  				       
+  				    	loadingScreen.setVisibility(View.INVISIBLE); 
+  				    	 
+  				    	Toast toast = Toast.makeText(SignInActivity.this, "Username or Password invalid", Toast.LENGTH_LONG);
+  				    	toast.show();
+  				    	 
+  				     } else {
+  				       
+  				    	loadingScreen.setVisibility(View.INVISIBLE); 
+  				    	 
+  				    	Toast toast = Toast.makeText(SignInActivity.this, "Login Error, please try again", Toast.LENGTH_LONG);
+  				    	toast.show();
+  				    	 
+  				     }
+  				   }
+  				 });
+	  				
+	  		}
+		});
 		
 	}
 

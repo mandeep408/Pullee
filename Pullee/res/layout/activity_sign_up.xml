@@ -12,9 +12,9 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="64dp"
         android:ems="10"
-        android:hint="Username" >
-
-        <requestFocus />
+        android:hint="Username"
+        android:singleLine="true"
+        android:imeOptions="actionNext" >
     </EditText>
 
     <EditText
@@ -25,7 +25,9 @@
         android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="Password"
+        android:singleLine="true" 
+        android:imeOptions="actionDone"/>
 
     <Button
         android:id="@+id/signup"
@@ -44,6 +46,8 @@
         android:layout_alignRight="@+id/password"
         android:layout_marginBottom="33dp"
         android:ems="10"
-        android:hint="Email" />
+        android:hint="Email" 
+        android:singleLine="true"
+        android:imeOptions="actionNext"/>
 
 </RelativeLayout>

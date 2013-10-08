@@ -29,7 +29,6 @@ public class SignUpActivity extends Activity
 		password = (EditText) this.findViewById(R.id.password);
 		email = (EditText) this.findViewById(R.id.email);
 		signupButton = (Button) this.findViewById(R.id.signup);
-
 		
 		signupButton.setOnClickListener(new View.OnClickListener() {
 
