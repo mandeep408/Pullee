@@ -15,11 +15,13 @@ import com.parse.SignUpCallback;
 
 public class SignUpActivity extends Activity
 {
+	
 	private EditText username, password, email;
     private Button signupButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+				
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
 		
