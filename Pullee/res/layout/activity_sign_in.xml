@@ -1,0 +1,75 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:layout_marginLeft="2dp"
+	android:layout_marginRight="2dp"
+	android:layout_marginTop="2dp"
+	android:layout_marginBottom="2dp" 
+	android:orientation="vertical"
+	android:weightSum="5.0">
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"/>
+    
+    <TextView
+        android:id="@+id/DirectionsText"
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+  		android:gravity="center_horizontal"
+  		android:textColor="#000000"
+  		android:textSize="20sp"
+  		android:text="Please Login to Parse." />
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"/>
+    
+    <EditText
+        android:id="@+id/Username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Username" >
+
+        <requestFocus />
+    </EditText>
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"/>
+    
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password" >
+    </EditText>
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"/>
+    
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="LOG IN" />
+    
+</LinearLayout>

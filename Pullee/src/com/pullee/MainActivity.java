@@ -37,10 +37,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		/** Required Parse code, first line is to initialize and use Parse, 2nd is to stard App statistic recording */
-		Parse.initialize(this, "9F2wROYBUEyqci0je6JBPPP1xmNKJcLfc0IACtce", "Zc95yEL51OX8db1jNEaqJ1suLcD1HmDKoptadApL"); 
-		ParseAnalytics.trackAppOpened(getIntent());		 
-
 		//Get rid of the title bar for the app
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
@@ -128,6 +124,8 @@ public class MainActivity extends Activity {
   			        		//  (there should only be 1 person in the list)
   			        		ParseObject person = scoreList.get(0);
   	  			        	
+  			        		Global.receiver = person;
+  			        		
   			        		//Set global variables equal to the person's information so they can be accessed and used 
   			        		//  for display in the ScanResultActivity
   	  			        	Global.name = person.getString("name");

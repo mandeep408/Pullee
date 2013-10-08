@@ -3,9 +3,11 @@ package com.pullee;
 import java.util.List;
 
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -92,7 +94,17 @@ public class DonateActivity extends Activity {
 	        		person.increment("credits", number);
 	        		person.saveInBackground();
 	        		System.out.println("INCREMENTED CREDITS");
-  		                
+	        		
+	        		System.out.println("CREATING DONATION OBJECT");
+	        		ParseObject donation = new ParseObject("Donation");
+	        		donation.put("donationAmount", number);
+	        		donation.put("donor", ParseUser.getCurrentUser());
+  		            donation.put("receiver", Global.receiver);
+  		            System.out.println("DONATION OBJECT CREATED");
+  		          
+  		            donation.saveInBackground();
+  		            System.out.println("DONATION OBJECT SAVED");
+  		          
 		        }
 		        
 		    }

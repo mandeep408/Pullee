@@ -7,5 +7,6 @@
     <string name="title_activity_scan_result">ScanResultActivity</string>
     <string name="title_activity_insert">InsertActivity</string>
     <string name="title_activity_donate">DonateActivity</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
 
 </resources>
