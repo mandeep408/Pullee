@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 	    	//Set up a ParseQuery for the Person class and find the Person who's name matches
 	    	//  what was encoded in the QR-Code. 
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-  			query.whereEqualTo("name", scanResult);
+  			query.whereEqualTo("objectId", scanResult);
   			//Run the query in a background thread, good practice to handle network connections on a seperate thread
   			query.findInBackground(new FindCallback<ParseObject>() {
   			    public void done(List<ParseObject> scoreList, ParseException e) {
@@ -135,6 +135,8 @@ public class MainActivity extends Activity {
   	  			        	Global.team =  person.getString("team");
   	  		                Global.donated = "Donated: " + person.getBoolean("Donate");
   	  		                Global.id = person.getObjectId();
+  	  		                
+  	  		                Global.accountBalance = person.getNumber("credits").doubleValue();
   	  		                
   			        	} else {
   			        		//else if no Person's were returned and no exception, it means no such person is in our DB

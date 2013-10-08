@@ -3,6 +3,7 @@ package com.pullee;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -82,22 +83,10 @@ public class ScanResultActivity extends Activity {
 		
 		donateButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				//Donate button updates buttons' text
-				donateButtonText.setText("Thanks for your donation");
-				//And updates DB to say this person donated to the scanned homeless person
-				ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-	  			query.whereEqualTo("name", Global.name);
-	  			query.findInBackground(new FindCallback<ParseObject>() {
-	  			    public void done(List<ParseObject> scoreList, ParseException e) {
-	  			        if (e == null) {
-	  			        	if(scoreList.size() > 0){
-	  			        		ParseObject person = scoreList.get(0);
-	  			        		person.put("Donate", true);
-	  			        		person.saveInBackground();
-	  			        	}
-	  			        }
-	  			    }
-	  			});
+				
+				Intent intent = new Intent(ScanResultActivity.this, DonateActivity.class);
+				startActivity(intent);
+				
 			}
 		});
 		

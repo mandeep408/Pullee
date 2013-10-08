@@ -53,7 +53,8 @@
         </activity>
         <activity
             android:name="com.pullee.DonateActivity"
-            android:label="@string/title_activity_donate" >
+            android:label="@string/title_activity_donate" 
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
     </application>
 

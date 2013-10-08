@@ -10,7 +10,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp" >
+        android:layout_marginBottom="25dp"
+        android:background="#000000" >
         
         <View
             android:layout_width="2dp"
@@ -52,9 +53,67 @@
                 android:layout_weight="1.0"/>
             
             <TextView
-		        android:layout_width="wrap_content"
+                android:id="@+id/DirectionsText"
+		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:text="@string/hello_world" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+		        android:gravity="center_horizontal"
+		        android:textColor="#FFFFFF"
+		        android:textSize="20sp"
+		        android:text="Please select the amount you would like to donate." />
+            
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"/>
+            
+            <Button
+                android:id="@+id/FiftyCentsButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="$0.50" />
+            
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"/>
+            
+            <Button
+                android:id="@+id/DollarButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="$1.00" />
+            
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"/>
+            
+            <Button
+                android:id="@+id/FiveDollarButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="$5.00" />
+            
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"/>
+            
+            <Button
+                android:id="@+id/BackButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Back" />
             
         </LinearLayout>
         

@@ -9,6 +9,9 @@ public class Global {
 	public static String team;
 	public static String donated;
 	public static String id;
+	
+	public static double accountBalance;
+	
 	public static File loc;
 	
 }
