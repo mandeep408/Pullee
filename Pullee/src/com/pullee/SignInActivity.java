@@ -4,7 +4,9 @@ import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
+import com.parse.PushService;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -37,6 +39,9 @@ public class SignInActivity extends Activity {
 		/** Required Parse code, first line is to initialize and use Parse, 2nd is to stard App statistic recording */
 		Parse.initialize(this, "9F2wROYBUEyqci0je6JBPPP1xmNKJcLfc0IACtce", "Zc95yEL51OX8db1jNEaqJ1suLcD1HmDKoptadApL"); 
 		ParseAnalytics.trackAppOpened(getIntent());		 
+		
+		PushService.setDefaultPushCallback(this, MainActivity.class);
+		ParseInstallation.getCurrentInstallation().saveInBackground();
 		
 		//Get rid of the title bar for the app
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
