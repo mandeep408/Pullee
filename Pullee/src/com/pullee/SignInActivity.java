@@ -30,6 +30,7 @@ public class SignInActivity extends Activity {
 	
 	private Button loginButton;
 	
+	
 	private RelativeLayout loadingScreen;
 	
 	@Override
