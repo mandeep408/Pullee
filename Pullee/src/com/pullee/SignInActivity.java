@@ -30,6 +30,9 @@ public class SignInActivity extends Activity {
 	
 	private Button loginButton;
 	
+	/**
+	 * STICKING OUT COMMENT 
+	 */
 	
 	private RelativeLayout loadingScreen;
 	
