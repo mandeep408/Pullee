@@ -29,15 +29,6 @@
         android:singleLine="true" 
         android:imeOptions="actionDone"/>
 
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="56dp"
-        android:text="Sign Up" />
-
     <EditText
         android:id="@+id/email"
         android:layout_width="wrap_content"
@@ -49,5 +40,34 @@
         android:hint="Email" 
         android:singleLine="true"
         android:imeOptions="actionNext"/>
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:text="Sign Up" />
+
+    <Button
+        android:id="@+id/smallButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="18dp"
+        android:text="Sign in" />
+
+    <TextView
+        android:id="@+id/smallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/smallButton"
+        android:layout_alignBottom="@+id/smallButton"
+        android:layout_toLeftOf="@+id/smallButton"
+        android:text="Already have an account? Sign in here:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

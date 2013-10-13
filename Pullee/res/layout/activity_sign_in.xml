@@ -77,16 +77,51 @@
 	        android:layout_marginLeft="20dp"
 	        android:layout_marginRight="20dp"
 	        android:text="LOG IN" />
+	    
+
+	    <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="1.0"/>
+	    
+        <TextView
+            android:id="@+id/smallText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/LogInButton"
+            android:layout_alignBottom="@+id/LogInButton"
+            android:layout_alignRight="@+id/spinner"
+            android:layout_marginRight="24dp"
+            android:text="Don't have an account yet?"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="1.0"/>
+        
+        <Button
+            android:id="@+id/smallButton2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="42dp"
+            android:layout_marginRight="25dp"
+            android:text="Sign up" />
         
     </LinearLayout>
-    
+
     <RelativeLayout
         android:id="@+id/LoadingScreen"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:background="#88000000" >
 
-         <TextView
+        <TextView
             android:id="@+id/LoadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,9 +129,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="60dp"
             android:text="Logging into Pullee ..."
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"/>
-        
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
         <ProgressBar
             android:id="@+id/spinner"
             style="?android:attr/progressBarStyleLarge"
@@ -104,6 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true" />
+
 
     </RelativeLayout>
     
