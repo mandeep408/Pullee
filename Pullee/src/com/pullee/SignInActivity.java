@@ -23,13 +23,13 @@ import android.widget.Toast;
 
 public class SignInActivity extends Activity {
 
-	private TextView directionsText, smallText2;
+	private TextView directionsText;
 	
 	private EditText usernameEditText;
 	private EditText passwordEditText;
 	
 	//need to rename vars to be more clear on their function
-	private Button loginButton, smallButton2;
+	private Button loginButton;
 	
 	/**
 	 * STICKING OUT COMMENT 
@@ -70,14 +70,16 @@ public class SignInActivity extends Activity {
 	  		
 	  	}
 		
+	  	//App stopped crashing once i removed smalltext and button
+	  	
 		directionsText = (TextView) this.findViewById(R.id.DirectionsText);
-		smallText2 = (TextView) this.findViewById(R.id.smallText2);
+		//smallText2 = (TextView) this.findViewById(R.id.smallText2);
 		
 		usernameEditText = (EditText) this.findViewById(R.id.Username);
 		passwordEditText = (EditText) this.findViewById(R.id.Password);
 		
 		loginButton = (Button) this.findViewById(R.id.LogInButton);
-		smallButton2 = (Button) this.findViewById(R.id.smallButton2);
+		//smallButton2 = (Button) this.findViewById(R.id.smallButton2);
 		
 		loadingScreen = (RelativeLayout) this.findViewById(R.id.LoadingScreen);
 		
@@ -119,7 +121,7 @@ public class SignInActivity extends Activity {
 	  		}
 		});
 		
-       smallButton2.setOnClickListener(new View.OnClickListener() {
+      /* smallButton2.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -128,7 +130,7 @@ public class SignInActivity extends Activity {
 				Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
 	  			startActivity(intent);
 			}
-		});
+		});*/
 	}
 	
 
