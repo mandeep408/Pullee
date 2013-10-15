@@ -164,7 +164,8 @@
 		            android:textSize="15sp"
 		            android:textColor="#FFFFFF"
 		            android:textStyle="bold"
-		            android:text="About Pullee" />
+		            android:text="Insert" />
+	            <!-- Replace insert above with About Pullee -->
 	            
 	        </RelativeLayout>
 	        
