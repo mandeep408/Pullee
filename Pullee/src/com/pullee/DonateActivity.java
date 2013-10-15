@@ -10,11 +10,13 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DonateActivity extends Activity {
 
@@ -104,6 +106,15 @@ public class DonateActivity extends Activity {
   		          
   		            donation.saveInBackground();
   		            System.out.println("DONATION OBJECT SAVED");
+  		            
+  		          //Adding a toast
+  		            Context context = getApplicationContext();
+					CharSequence text = "Thank you so much for your donation!!";
+					int duration = Toast.LENGTH_SHORT;
+	
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+	
   		          
 		        }
 		        
