@@ -110,6 +110,7 @@ public class InsertActivity extends Activity {
 					newGuy.put("name", name);
 					newGuy.put("story", story);
 					newGuy.put("Image", file);
+					newGuy.put("credits", 0);
 					newGuy.saveInBackground();
 					
 					//code for sending toast
